@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">newble</string>
+    <string name="btn_scan">开始扫描</string>
+    <string name="battery">电池:</string>
+    <string name="rssi">RSSi:</string>
+    <string name="temperature">温度:</string>
+    <string name="major">Major:</string>
+    <string name="minor">Minor:</string>
+    <string name="proximity_uuid">UUID:</string>
+    <string name="distance">距离:</string>
+    <string name="SN">SN:</string>
+    <string name="ID">ID:</string>
+</resources>
