@@ -27,8 +27,7 @@ public class MainActivity extends AppCompatActivity {
     //日志
     public final static String TAG=MainActivity.class.getSimpleName();
     MyApp app;
-    String beaconFilter;
-    String matchFormat;
+
     BluetoothManager bluetoothManager;
     BluetoothAdapter bluetoothAdapter;
     //LayoutInflater inflater;
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
      */
     CopyOnWriteArrayList<Beacon> beacons;
     Handler handler = new Handler();
-    Button scan_btn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,23 +113,31 @@ public class MainActivity extends AppCompatActivity {
         beaconManagerListener=new BeaconManagerListener() {
             @Override
             public void onNewBeacon(Beacon beacon) {
-              if(beacon.getSerialNumber().equals("0117C597F511"))
-              {
-                  Log.i(TAG,"zhaodaol");
+                if(beacon.getSerialNumber().equals("0117C597F511"))
+                {
+                    Log.i(TAG,"zhaodaol");
 
-                  runOnUiThread(new Runnable() {
-                      @Override
-                      public void run() {
-                          Toast.makeText(MainActivity.this, "zhao dao l", Toast.LENGTH_SHORT).show();
-                      }
-                  });
-              }
 
+                }
+                //获得扫描的设备的sn码并通过toast显示
+              final String sn=beacon.getSerialNumber();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this,sn, Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
 
             @Override
             public void onGoneBeacon(Beacon beacon) {
-
+                final String sn=beacon.getSerialNumber();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this,"已离开"+sn, Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
 
             @Override
