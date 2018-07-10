@@ -2,30 +2,64 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ccs.checkin">
 
+    <!-- network -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- bluetooth -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- storage -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
-        android:name="com.example.ccs.checkin.MyApp"
+        android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+        <!-- 登录界面 -->
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login">
+
+        </activity>
+        <!-- 主界面 -->
+        <activity android:name=".CheckinActivity">
+
+        </activity>
+        <activity
+            android:name=".http_test"
+            android:label="@string/http_test_name" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- service -->
+        <service android:name="com.sensoro.beacon.kit.BeaconService" />
+        <service android:name="com.sensoro.beacon.kit.IntentProcessorService" />
 
-        <service android:name="com.sensoro.beacon.kit.BeaconService" >
-        </service>
-        <service android:name="com.sensoro.beacon.kit.IntentProcessorService" >
-        </service>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings">
+
+        </activity>
     </application>
 
 </manifest>
