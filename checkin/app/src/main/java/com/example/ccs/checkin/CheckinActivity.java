@@ -6,16 +6,18 @@ import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.sensoro.beacon.kit.Beacon;
 import com.sensoro.beacon.kit.BeaconManagerListener;
 import com.sensoro.cloud.SensoroManager;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -100,8 +102,8 @@ public class CheckinActivity extends AppCompatActivity {
         btn_http.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             Intent intent= new Intent(CheckinActivity.this,http_test.class);
-             startActivity(intent);
+          //   Intent intent= new Intent(CheckinActivity.this,http_test.class);
+            // startActivity(intent);
 
             }
         });
@@ -144,16 +146,18 @@ public class CheckinActivity extends AppCompatActivity {
                 //获得扫描的设备的sn码并通过toast显示
               final String sn=beacon.getSerialNumber();
               final String id=beacon.getMajor().toString()+beacon.getMinor().toString();
+              writeText(sn);
+         //
+          //
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        Toast.makeText(CheckinActivity.this,sn, Toast.LENGTH_SHORT).show();
                         lv_sn.setText(sn);
-                        writeText(sn);
                         lv_id.setText(id);
 
-
                        //handler.postDelayed(this,2000);
-                       Toast.makeText(CheckinActivity.this,sn, Toast.LENGTH_SHORT).show();
+
                     }
                 });
             }
@@ -185,6 +189,7 @@ public class CheckinActivity extends AppCompatActivity {
         String key= beacon.getSerialNumber();
         return key;
     }
+    //写一一个通知体
    /*
     *获取当前系统时间
     */
