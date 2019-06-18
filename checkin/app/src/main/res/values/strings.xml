@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">checkin</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="ask_bt_open">Do you want to open bluetooth</string>
+    <string name="id">ID:</string>
+    <string name="sn">SN:</string>
+    <string name="http_test_name">httpTest</string>
+    <string name="title_activity_login">Sign in</string>
+</resources>
